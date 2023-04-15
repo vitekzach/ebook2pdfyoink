@@ -1,0 +1,43 @@
+[tool.poetry]
+name = "project-name"
+version = "0.0.1"
+description = "Template for a Python project with logging, pre-commit, docs, tests set up"
+authors = ["vitek <vitekzach@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "project_name"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+loguru = "^0.6.0"
+better-exceptions = "^0.3.3"
+pydantic = "^1.10.4"
+fastapi = "^0.91.0"
+uvicorn = {extras = ["standard"], version = "^0.20.0"}
+
+
+[tool.poetry.group.dev.dependencies]
+pylint = "^2.16.1"
+pydocstyle = "^6.3.0"
+mypy = "^1.0.0"
+flake8 = "^6.0.0"
+bandit = {extras = ["toml"], version = "^1.7.4"}
+isort = "^5.12.0"
+
+[tool.pylint]
+max-line-length = 120
+
+[tool.mypy]
+ignore_missing_imports = true
+no_namespace_packages = true
+
+[tool.bandit]
+exclude_dirs = ["tests",]
+
+[tool.pytest.ini_options]
+markers = [
+    "utils: utilities for package",
+]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
